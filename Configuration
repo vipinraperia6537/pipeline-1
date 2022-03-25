@@ -1,5 +1,5 @@
 git_url                = https://github.com/OpsTree/spring3hibernate
-git_branch             = master
+git_branch             = ninja
 java_version           = java8
 project_name           = spring3hibernate
 project_dir            = .
