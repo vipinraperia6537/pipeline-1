@@ -14,5 +14,10 @@ pipeline {
                 //echo "Hello"
             }
         }
+        stage('code test'){
+            steps{
+                kumar('test')
+            }
+        }
     }
 }
