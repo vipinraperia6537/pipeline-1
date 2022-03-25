@@ -31,8 +31,8 @@ pipeline {
         }
     }
     post { 
-       // always { 
-         //   cleanWs()
+        //always { 
+          //  cleanWs()
         //}
         failure {
             mail to: 'shitunjay.kumar@mygurukulam.org',
