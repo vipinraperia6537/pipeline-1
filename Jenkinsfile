@@ -1,18 +1,48 @@
-@Library('pipeline_library@main') _
+@Library('pipeline_library@lib') _
+properties([gitLabConnection(gitLabConnection: '', jobCredentialId: ''), parameters([string('Url'), string('branch')])])
+
 pipeline {
     agent any
-
     stages {
-        stage('git'){
-            steps{
-                git branch:'main', url:'https://shitunjay:Shit9454..Sjeh@gitlab.com/shitunjay/pipeline_project.git'
+        stage('Git'){
+            steps {
+                clone()
             }
         }
-        stage('code stability') {
+        stage('Code stability'){
             steps {
-                pipeline('compile')
-                //echo "Hello"
+                kumar('compile')
             }
+        }
+        stage('Code Quality'){
+            steps {
+                   kumar('checkstyle:checkstyle')
+            }
+        }
+         stage('Code Coverage'){
+            steps {
+                   kumar('cobertura:cobertura')
+            }   
+        }
+        stage('Code Coverage Report'){
+            steps {
+                cobertura autoUpdateHealth: false, autoUpdateStability: false, coberturaReportFile: '**target/site/cobertura/coverage.xml'
+            }
+        }
+    }
+    post { 
+        always { 
+            cleanWs()
+        }
+        failure {
+            mail to: 'shitunjay.kumar@mygurukulam.org',
+            subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+            body: "Something is wrong with ${env.BUILD_URL}"
+        }
+        success {
+            mail to: 'shitunjay.kumar@mygurukulam.org',
+            subject: "Pipeline successful: ${currentBuild.fullDisplayName}",
+            body: "This build is successful with ${env.BUILD_URL}"
         }
     }
 }
