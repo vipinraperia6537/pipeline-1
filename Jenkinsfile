@@ -17,21 +17,21 @@ pipeline {
         stage('Code stability'){
             steps {
                 script{
-                kumar('compile')
+                kumar.jobmvn('compile')
                 }
             }
         }
         stage('Code Quality'){
             steps {
                 script{
-                   kumar('checkstyle:checkstyle')
+                   kumar.jobmvn('checkstyle:checkstyle')
                 }
             }
         }
          stage('Code Coverage'){
             steps {
                 script{
-                   kumar('cobertura:cobertura')
+                   kumar.jobmvn('cobertura:cobertura')
                 }
             }   
         }
