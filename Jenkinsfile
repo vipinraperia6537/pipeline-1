@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('git'){
             steps{
-                git branch:'main', url:'https://shitunjay:Shit9454..Sjeh@github.com/shitunjay/pipeline.git'
+                git branch:'main', url:'https://shitunjay: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@github.com/shitunjay/pipeline.git'
             }
         }
         stage('code stability') {
