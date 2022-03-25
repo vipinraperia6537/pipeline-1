@@ -1,5 +1,5 @@
 @Library('pipeline_library@lib') _
-properties([gitLabConnection(gitLabConnection: '', jobCredentialId: ''), parameters([string('Url'), string('branch')])])
+properties([gitLabConnection(gitLabConnection: '', jobCredentialId: 'github'), parameters([string('Url'), string('branch')])])
 
 pipeline {
     agent any
@@ -31,9 +31,9 @@ pipeline {
         }
     }
     post { 
-        always { 
-            cleanWs()
-        }
+       // always { 
+         //   cleanWs()
+        //}
         failure {
             mail to: 'shitunjay.kumar@mygurukulam.org',
             subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
