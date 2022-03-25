@@ -26,7 +26,7 @@ pipeline {
         }
         stage('Code Coverage Report'){
             steps {
-                cobertura coberturaReportFile: '**target/site/cobertura/coverage.xml'
+                cobertura coberturaReportFile: '**target/cobertura/coverage.xml'
             }
         }
     }
