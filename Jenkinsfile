@@ -21,7 +21,7 @@ pipeline {
         }
          stage('Code Coverage'){
             steps {
-                   kumar('cobertura:cobertura')
+                   kumar('cobertura:cobertura -Dcobertura.report.format=xml')
             }   
         }
         stage('Code Coverage Report'){
