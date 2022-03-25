@@ -1,5 +1,5 @@
 @Library('pipeline_library@lib') _
-properties([gitLabConnection(gitLabConnection: '', jobCredentialId: ''), parameters([string('Url'), string('branch')])])
+properties([gitLabConnection(gitLabConnection: '', jobCredentialId: 'github'), parameters([string('Url'), string('branch')])])
 
 pipeline {
     agent any
@@ -26,14 +26,14 @@ pipeline {
         }
         stage('Code Coverage Report'){
             steps {
-                cobertura autoUpdateHealth: false, autoUpdateStability: false, coberturaReportFile: '**target/site/cobertura/coverage.xml'
+                cobertura coberturaReportFile: '**target/site/cobertura/coverage.xml'
             }
         }
     }
     post { 
-        always { 
-            cleanWs()
-        }
+        //always { 
+          //  cleanWs()
+        //}
         failure {
             mail to: 'shitunjay.kumar@mygurukulam.org',
             subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
