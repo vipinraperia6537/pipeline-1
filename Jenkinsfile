@@ -7,38 +7,46 @@ pipeline {
         stage('Git'){
             steps {
                 script{
-                config = readProperties file: 'Configuration'
-                echo "$config.git_url"
-                echo "$config.git_branch"
-                //nikhil()
+                //config = readProperties file: 'Configuration'
+                //echo "$config.git_url"
+                //echo "$config.git_branch"
+                kumar.clonegit()
                 }
             }
         }
         stage('Code stability'){
             steps {
+                script{
                 kumar('compile')
+                }
             }
         }
         stage('Code Quality'){
             steps {
+                script{
                    kumar('checkstyle:checkstyle')
+                }
             }
         }
          stage('Code Coverage'){
             steps {
+                script{
                    kumar('cobertura:cobertura')
+                }
             }   
         }
         stage('Code Coverage Report'){
             steps {
+                script{
                 cobertura coberturaReportFile: '**target/site/cobertura/coverage.xml'
+                }
             }
         }
     }
     post { 
-        //always { 
-          //  cleanWs()
-        //}
+        always { 
+            cleanWs()
+        }
         failure {
             mail to: 'shitunjay.kumar@mygurukulam.org',
             subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
