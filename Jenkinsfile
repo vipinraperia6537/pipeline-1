@@ -6,9 +6,9 @@ pipeline {
     stages {
         stage('Git'){
             steps {
-                var_config = readProperties file: 'Configuration'
-                echo "$var_config git_url"
-                echo "$var_config git_branch"
+                config = readProperties file: 'Configuration'
+                echo "$config git_url"
+                echo "$config git_branch"
                 //nikhil()
             }
         }
