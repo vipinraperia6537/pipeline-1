@@ -8,8 +8,8 @@ pipeline {
             steps {
                 script{
                 config = readProperties file: 'Configuration'
-                echo "$config git_url"
-                echo "$config git_branch"
+                echo "$config.git_url"
+                echo "$config.git_branch"
                 //nikhil()
                 }
             }
