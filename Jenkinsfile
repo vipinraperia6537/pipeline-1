@@ -1,12 +1,12 @@
 @Library('pipeline_library@lib') _
 properties([gitLabConnection(gitLabConnection: '', jobCredentialId: 'github'), parameters([string('Url'), string('branch')])])
-
+config = readProperties file: 'Configuration'
 pipeline {
     agent any
     stages {
         stage('Git'){
             steps {
-                config = readProperties file: 'Configuration'
+                
                 echo "$config git_url"
                 echo "$config git_branch"
                 //nikhil()
