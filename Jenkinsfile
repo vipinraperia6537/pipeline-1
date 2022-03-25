@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Git'){
             steps {
-                clone()
+                nikhil()
             }
         }
         stage('Code stability'){
