@@ -26,7 +26,7 @@ pipeline {
         }
         stage('Code Coverage Report'){
             steps {
-                cobertura autoUpdateHealth: false, autoUpdateStability: false, coberturaReportFile: '**target/site/cobertura/coverage.xml'
+                cobertura coberturaReportFile: '**target/site/cobertura/coverage.xml'
             }
         }
     }
