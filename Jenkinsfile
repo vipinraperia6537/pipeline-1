@@ -10,7 +10,7 @@ pipeline {
         }
         stage('code stability') {
             steps {
-                pipeline('compile')
+                script('compile')
                 //echo "Hello"
             }
         }
