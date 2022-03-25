@@ -2,7 +2,6 @@
 def jobmvn(command){
     sh "mvn ${command}"
 }
-def clone(){
-    config = readProperties file: 'Configuration'
-    git branch:${config.git_branch},url:${config.git_url}
+def clonegit(){
+  git branch:"$branch", url:"$url"
 }
