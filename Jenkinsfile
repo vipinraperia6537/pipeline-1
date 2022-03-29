@@ -48,12 +48,12 @@ pipeline {
             cleanWs()
         }
         failure {
-            mail to: 'shitunjay.kumar@mygurukulam.org',
+            mail to: 'vipin.raperia@mygurukulam.org',
             subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
             body: "Something is wrong with ${env.BUILD_URL}"
         }
         success {
-            mail to: 'shitunjay.kumar@mygurukulam.org',
+            mail to: 'vipin.raperia@mygurukulam.org',
             subject: "Pipeline successful: ${currentBuild.fullDisplayName}",
             body: "This build is successful with ${env.BUILD_URL}"
         }
