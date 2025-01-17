@@ -1,6 +1,3 @@
-@Library('pipeline_library@lib') _
-properties([gitLabConnection(gitLabConnection: '', jobCredentialId: ''), parameters([string('Url'), string('branch')])])
-
 pipeline {
     agent any
     stages {
